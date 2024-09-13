@@ -6,13 +6,16 @@ const useLogin = () => {
  const [loading, setLoading] = useState(false);
   const {setAuthUser} = useAuthContext();
 
-const login = async (username, password) => {
+const login = async (userName, password) => {
+
+  const success = handleInputErrors({ userName, password, })
+  if (!success) return;
     setLoading(true)
   try {
    const res = await fetch("/api/auth/Login", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ username, password})
+    body: JSON.stringify({ userName, password})
    })
 
    const data = await res.json()
@@ -33,3 +36,11 @@ return {loading, login}
 }
 
 export default useLogin
+
+function handleInputErrors({ userName, password}) {
+  if (!userName || !password) {
+    toast.error("Please fill in all the fields")
+    return false
+  }
+  return true;
+}

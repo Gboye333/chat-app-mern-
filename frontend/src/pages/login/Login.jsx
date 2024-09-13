@@ -40,7 +40,7 @@ const Login = () => {
             <label className="label">
               <span className='text-base label-text'>Password</span>
             </label>
-            <input type="text" placeholder='Enter Password' className='w-full input input-bordered h-10'
+            <input type="password" placeholder='Enter Password' className='w-full input input-bordered h-10'
               value={password}
               onChange={(e) => setPasword(e.target.value)}
             />
@@ -50,8 +50,11 @@ const Login = () => {
           </Link>
 
           <div>
-            <button className='btn btn-block btn-sm mt-2'>
-              Login
+            <button className='btn btn-block btn-sm mt-2'
+             disabled={loading} 
+            >
+            {loading ? <span className='loading loading-spinner'></span> : "Login"}
+    
             </button>
           </div>
         </form>
