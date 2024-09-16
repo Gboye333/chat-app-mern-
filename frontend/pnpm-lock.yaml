@@ -64,7 +64,11 @@ importers:
         specifier: ^3.4.10
         version: 3.4.10
       vite:
+<<<<<<< HEAD
         specifier: ^5.4.1
+=======
+        specifier: ^5.4.2
+>>>>>>> 90e4727 (updated code)
         version: 5.4.2
 
 packages:
